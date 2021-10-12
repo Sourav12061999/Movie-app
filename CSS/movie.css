@@ -1,0 +1,47 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.cont {
+  width: 90%;
+  margin: auto;
+  height: 90vh;
+  display: flex;
+  margin-top: 20px;
+}
+#img {
+  width: 50%;
+}
+.text {
+  width: 45%;
+  margin-left: 5%;
+  /* border: 1px solid red; */
+  padding: 2%;
+}
+.text h1 {
+  margin-bottom: 20px;
+}
+.text h2 {
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+.text h3 {
+  font-weight: normal;
+  color: grey;
+  margin-bottom: 5px;
+}
+#plot {
+  height: 200px;
+  padding: 2%;
+  border: 1px solid rgb(197, 196, 196);
+  overflow-y: scroll;
+  margin-top: 30px;
+}
+#plot::-webkit-scrollbar {
+  display: none;
+}
+#plot:hover {
+  box-shadow: 4px 4px 4px 4px rgb(177, 176, 176);
+}
