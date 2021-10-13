@@ -89,3 +89,6 @@ main > h2 {
 main > h2:nth-child(1) {
   margin-top: 20px;
 }
+main > div > div:hover {
+  cursor: pointer;
+}

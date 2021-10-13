@@ -80,7 +80,15 @@ function TrendingDOM(data, parent) {
   let img = document.createElement("div");
   img.style.background = `url(https://image.tmdb.org/t/p/w500/${data.poster_path})`;
   img.style.backgroundSize = "cover";
+  img.addEventListener("click", () => {
+    RecomendedClick(data.id);
+  });
   parent.appendChild(img);
+}
+function RecomendedClick(id) {
+  window.localStorage.removeItem("movie-app-imdb-data");
+  localStorage.setItem("movie-app-tmdb-data", id);
+  window.location.href = "./movie.html";
 }
 //Acctual Code
 input.addEventListener("input", function () {
