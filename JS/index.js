@@ -2,6 +2,8 @@
 let input = document.getElementById("input");
 let result = document.getElementById("result");
 let main = document.querySelector("main");
+let popular = document.getElementById("popular");
+let recent = document.getElementById("recent");
 //All normal variables
 let interval;
 // Functions
@@ -50,6 +52,36 @@ function NewPage(element) {
   localStorage.setItem("movie-app-imdb-data", element.imdbID);
   window.location.href = "./movie.html";
 }
+async function FetchTrending(url, popular, time) {
+  let res = await fetch(url);
+  let data = await res.json();
+  let count = 0;
+  popular.innerHTML = null;
+  for (let j = count; j < count + 5; j++) {
+    TrendingDOM(data.results[j], popular);
+  }
+  count++;
+  if (count == data.results.length - 5) {
+    count = 0;
+  }
+  let interval = setInterval(() => {
+    popular.innerHTML = null;
+    for (let j = count; j < count + 5; j++) {
+      TrendingDOM(data.results[j], popular);
+    }
+    count++;
+    if (count == data.results.length - 5) {
+      count = 0;
+    }
+  }, time);
+  console.log(data);
+}
+function TrendingDOM(data, parent) {
+  let img = document.createElement("div");
+  img.style.background = `url(https://image.tmdb.org/t/p/w500/${data.poster_path})`;
+  img.style.backgroundSize = "cover";
+  parent.appendChild(img);
+}
 //Acctual Code
 input.addEventListener("input", function () {
   result.style.display = "block";
@@ -58,3 +90,13 @@ input.addEventListener("input", function () {
 main.addEventListener("click", function () {
   result.style.display = "none";
 });
+FetchTrending(
+  `https://api.themoviedb.org/3/trending/movie/week?api_key=84bd2ca964c1790070846809a1b4300b`,
+  popular,
+  4000
+);
+FetchTrending(
+  `https://api.themoviedb.org/3/movie/now_playing?api_key=84bd2ca964c1790070846809a1b4300b&language=en-US&page=1`,
+  recent,
+  5000
+);

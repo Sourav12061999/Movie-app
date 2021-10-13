@@ -15,7 +15,7 @@ async function Fetch(id) {
   DOM(data);
 }
 function DOM(data) {
-  if (data.Poster == "N/A" || data.Poster != null || data.Poster != undefined) {
+  if (data.Poster == "N/A" || data.Poster == null || data.Poster == undefined) {
     img.style.background = `url(../not.jfif)`;
   } else {
     img.style.background = `url(${data.Poster})`;
