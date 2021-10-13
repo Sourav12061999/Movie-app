@@ -74,7 +74,7 @@ if (id == null) {
       return res.json();
     })
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       if (res.movie_results.length > 0) {
         id2 = res.movie_results[0].id;
       } else {
